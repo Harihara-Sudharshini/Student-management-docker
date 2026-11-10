@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: studentmanagement-backend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: studentmanagement-backend
+
+  template:
+    metadata:
+      labels:
+        app: studentmanagement-backend
+
+    spec:
+      containers:
+        - name: backend
+          image: sudharshh/studentmanagement-backend:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 5000
+
+          env:
+            - name: PORT
+              value: "5000"
+
+            - name: MONGO_URI
+              value: "mongodb://host.minikube.internal:27017/campusflow"

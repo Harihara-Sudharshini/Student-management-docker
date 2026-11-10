@@ -254,7 +254,12 @@ return res.status(400).json({
 }
 });
 
-// Start server
-app.listen(PORT, () => {
-console.log(`CampusFlow backend running at http://localhost:${PORT}`);
-});
+// Export Express app for Vercel
+module.exports = app;
+
+// Start server only when running locally
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`CampusFlow backend running at http://localhost:${PORT}`);
+  });
+}

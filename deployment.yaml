@@ -1,0 +1,27 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: studentmanagement-frontend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: studentmanagement-frontend
+
+  template:
+    metadata:
+      labels:
+        app: studentmanagement-frontend
+
+    spec:
+      containers:
+        - name: frontend
+          image: sudharshh/studentmanagement-frontend:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
