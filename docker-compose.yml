@@ -1,4 +1,4 @@
-﻿services:
+services:
   backend:
     build:
       context: ./backend
@@ -9,7 +9,7 @@
       - "5001:5000"
     environment:
       PORT: "5000"
-      MONGO_URI: "mongodb://host.docker.internal:27017/campusflow"
+      MONGO_URI: "mongodb://campusflow-mongodb:27017/campusflow"
 
   frontend:
     build:
@@ -21,3 +21,4 @@
       - "5174:80"
     depends_on:
       - backend
+
